@@ -410,4 +410,127 @@
 		<child link = "thumb_anchor"/>
 		<origin rpy = "0 0 0" xyz = "52.00122724e-3 28.00869333e-3 6.98483578e-3"/>
 	</joint>
+
+	<ros2_control name="GazeboSimSystem" type="system">
+		<hardware>
+			<plugin>gazebo_ros2_control/GazeboSystem</plugin>
+		</hardware>
+
+		<joint name="index_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="index_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="index_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="middle_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="middle_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="ring_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="ring_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="pinky_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="pinky_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="thumb_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="thumb_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+	</ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find ability_hand_sim)/config/hand_control.yaml</parameters>
+    </plugin>
+  </gazebo>
+
 </robot>

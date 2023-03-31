@@ -18,7 +18,7 @@ find_package(gazebo_ros REQUIRED)
 
 #our launch files and stuff
 install(
-  DIRECTORY src launch urdf rviz meshes 
+  DIRECTORY src launch urdf rviz meshes config
   DESTINATION share/${PROJECT_NAME}
 )
 

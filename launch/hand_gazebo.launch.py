@@ -52,6 +52,17 @@ def generate_launch_description():
         condition=UnlessCondition(LaunchConfiguration('gui'))
     )
 
+    load_joint_state_broadcaster = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
+             'joint_state_broadcaster'],
+        output='screen'
+    )
+
+    load_joint_effort_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', 'joint_effort_controller'],
+        output='screen'
+    )
+
 
     # Gazebo launch
     gazebo = IncludeLaunchDescription(
@@ -72,6 +83,18 @@ def generate_launch_description():
     return LaunchDescription([
         DeclareLaunchArgument(name='gui', default_value='True',
                                             description='Flag to enable joint_state_publisher_gui'),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=spawn_entity,
+                on_exit=[load_joint_state_broadcaster],
+            )
+        ),
+        RegisterEventHandler(
+            event_handler=OnProcessExit(
+                target_action=load_joint_state_broadcaster,
+                on_exit=[load_joint_effort_controller],
+            )
+        ),
         gazebo,
         model_arg,
         joint_state_publisher_node,
