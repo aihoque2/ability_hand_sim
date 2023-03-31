@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(controller_manager_msgs REQUIRED)
+find_package(control_msgs REQURED)
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
 find_package(gazebo_ros REQUIRED)
@@ -16,15 +17,17 @@ find_package(gazebo_ros REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
+add_executable(control_hand_test src/control_hand_test.cpp)
+ament_target_dependencies(control_hand_test rclcpp )
+
 #our launch files and stuff
 install(
   DIRECTORY src launch urdf rviz meshes config
   DESTINATION share/${PROJECT_NAME}
 )
 
-# python nodes install
-
-install(PROGRAMS
+# C++ nodes install
+install(TARGETS
 
   DESTINATION lib/${PROJECT_NAME}
 )

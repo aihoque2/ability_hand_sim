@@ -9,6 +9,11 @@
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
+  <build_depend>control_msgs</build_depend>
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>rclcpp</build_depend>
+  <build_depend>std_msgs</build_depend>
+
   <depend>urdf</depend>
   <depend>gazebo_ros</depend>
   <depend>gazebo_plugins</depend>
@@ -16,8 +21,10 @@
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
-  <exec_depend>gazebo_ros_pkgs</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>ros2launch</exec_depend>
+  <exec_depend>control_msgs</exec_depend>
+
 
   <export>
     <build_type>ament_cmake</build_type>
