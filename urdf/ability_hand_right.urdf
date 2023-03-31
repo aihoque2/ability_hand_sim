@@ -26,7 +26,6 @@
 			<geometry>
 				<mesh filename="package://ability_hand_sim/meshes/wristmesh.STL"/>
 			</geometry>
-			<material name="blue"/>
 		</visual>		
 		<inertial>	<!-- the mass and inertia here are NOT correct -->
 			<mass value = "0.200"/>
@@ -186,7 +185,6 @@
 		<child link="middle_L1"/>
 		<origin xyz = " -9.653191e-3 -15.310271e-3 -67.853949e-3 " rpy = " -1.2810616535897934 1.308458 -1.2453756535897933 " />
 		<limit lower = "0" upper = "2.0943951" effort = "0.20" velocity = "8.0677777442"/>		<!-- angles in rad, efforts in N-m, velocity in rad/s -->
-		<dynamics damping = "0.001" friction = "0.001" />	<!-- Friction coefficient is not from quantitative measurement -->
 		<axis xyz="0 0 1"/>
 	</joint>
 	<joint name="middle_q2" type="revolute">
@@ -429,16 +427,6 @@
 		</joint>
 
 		<joint name="index_q2">
-			<command_interface name="effort">
-				<param name="min">-0.20</param>
-				<param name="min">0.20</param>
-			</command_interface>
-			<state_interface name="position"/>
-			<state_interface name="effort"/>
-			<state_interface name="velocity"/>
-		</joint>
-
-		<joint name="index_q1">
 			<command_interface name="effort">
 				<param name="min">-0.20</param>
 				<param name="min">0.20</param>
