@@ -32,13 +32,26 @@
 			<inertia ixx="978.26e-6" ixy = "87.34e-6" ixz = "322.99e-6" iyy = "1244.78e-6" iyz = "244.74e-6" izz = "456.22e-6" />
 			<origin xyz = "22.41911e-3 -0.15798201e-3 -0.01319866e-3" rpy = "0 0 0"/>
 		</inertial>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "0 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/wristmesh.STL"/>
+			</geometry>
+		</collision>	
 	</link>
 	<joint name="wrist2thumb" type="fixed">
 		<parent link="base"/>
 		<child link="thumb_base"/>
 		<origin xyz = "-24.0476665e-3 3.78124745e-3 32.32964923e-3" rpy = "3.14148426 -0.08848813 -3.14036612"/>
 	</joint>
-  
+
+  	<link name="world"/>
+  	<joint name="grounding	" type="fixed">
+		<parent link="base"/>
+		<child link="world"/>
+		<origin xyz = "0. 0. 0." rpy = "0. 0. 0."/>
+	</joint>
+
 	<link name="thumb_base" >
 		<inertial>
 			<mass value = "0.200"/>
@@ -51,7 +64,14 @@
 			<geometry>
 				<mesh filename="package://ability_hand_sim/meshes/FB_palm_ref_MIR.STL"/>
 			</geometry>
-		</visual>		
+		</visual>	
+
+		<collision>
+			<origin rpy = "0 0 0" xyz = "0 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/FB_palm_ref_MIR.STL"/>
+			</geometry>
+		</collision>		
 	</link>
 	
 
@@ -68,6 +88,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<link name="index_L2" >
 		<inertial>
@@ -81,6 +107,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<joint name="index_q1" type="revolute">
 		<parent link="thumb_base"/>
@@ -120,6 +152,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="middle_L2" >
@@ -134,6 +172,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<joint name="middle_q1" type="revolute">
 		<parent link="thumb_base"/>
@@ -176,6 +220,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<link name="ring_L2" >
 		<inertial>
@@ -188,7 +238,13 @@
 			<geometry>
 				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
-		</visual>		
+		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>		
 	</link>
 	<joint name="ring_q1" type="revolute">
 		<parent link="thumb_base"/>
@@ -233,6 +289,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="pinky_L2" >
@@ -247,6 +309,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<joint name="pinky_q1" type="revolute">
@@ -291,6 +359,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/thumb-F1-MIR.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = " 27.8283501e-3 1.7436510745838653e-19 14.7507e-3 " rpy = " 1.832595714594045 -0.0 5.366520605522463e-18 " />
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F1-MIR.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="thumb_L2" >
@@ -306,6 +380,12 @@
 				<mesh filename="package://ability_hand_sim/meshes/thumb-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "65.18669e-3 23.34021e-3 3.93483e-3" rpy = "-3.141592 0 0.343830"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F2.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<joint name="thumb_q1" type="revolute">
