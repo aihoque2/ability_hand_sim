@@ -26,6 +26,7 @@
 			<geometry>
 				<mesh filename="package://ability_hand_sim/meshes/wristmesh.STL"/>
 			</geometry>
+			<material name="blue"/>
 		</visual>		
 		<inertial>	<!-- the mass and inertia here are NOT correct -->
 			<mass value = "0.200"/>
@@ -45,6 +46,7 @@
 		<origin xyz = "-24.0476665e-3 3.78124745e-3 32.32964923e-3" rpy = "3.14148426 -0.08848813 -3.14036612"/>
 	</joint>
 
+	<!-- dummy link  -->
   	<link name="world"/>
   	<joint name="grounding	" type="fixed">
 		<parent link="base"/>
