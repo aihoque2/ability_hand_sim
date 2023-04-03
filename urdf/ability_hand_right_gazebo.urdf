@@ -24,7 +24,7 @@
 		<visual name="wrist_mesh">
 			<origin rpy = "0 0 0" xyz = "0 0 0"/>
 			<geometry>
-				<mesh filename="models/wristmesh.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/wristmesh.STL"/>
 			</geometry>
 		</visual>		
 		<inertial>	<!-- the mass and inertia here are NOT correct -->
@@ -32,13 +32,27 @@
 			<inertia ixx="978.26e-6" ixy = "87.34e-6" ixz = "322.99e-6" iyy = "1244.78e-6" iyz = "244.74e-6" izz = "456.22e-6" />
 			<origin xyz = "22.41911e-3 -0.15798201e-3 -0.01319866e-3" rpy = "0 0 0"/>
 		</inertial>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "0 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/wristmesh.STL"/>
+			</geometry>
+		</collision>	
 	</link>
 	<joint name="wrist2thumb" type="fixed">
 		<parent link="base"/>
 		<child link="thumb_base"/>
 		<origin xyz = "-24.0476665e-3 3.78124745e-3 32.32964923e-3" rpy = "3.14148426 -0.08848813 -3.14036612"/>
 	</joint>
-  
+
+	<!-- dummy link  -->
+  	<link name="world"/>
+  	<joint name="grounding	" type="fixed">
+		<parent link="world"/>
+		<child link="base"/>
+		<origin xyz = "0. 0. 0." rpy = "0. 0. 0."/>
+	</joint>
+
 	<link name="thumb_base" >
 		<inertial>
 			<mass value = "0.200"/>
@@ -49,9 +63,16 @@
 		<visual name="palm_mesh">
 			<origin rpy = "0 0 0" xyz = "0 0 0"/>
 			<geometry>
-				<mesh filename="models/FB_palm_ref_MIR.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/FB_palm_ref_MIR.STL"/>
 			</geometry>
-		</visual>		
+		</visual>	
+
+		<collision>
+			<origin rpy = "0 0 0" xyz = "0 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/FB_palm_ref_MIR.STL"/>
+			</geometry>
+		</collision>		
 	</link>
 	
 
@@ -65,9 +86,15 @@
 		<visual name="index_mesh_1">
 			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
 			<geometry>
-				<mesh filename="models/idx-F1.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<link name="index_L2" >
 		<inertial>
@@ -78,9 +105,15 @@
 		<visual name="index_mesh_2">
 			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
 			<geometry>
-				<mesh filename="models/idx-F2.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<joint name="index_q1" type="revolute">
 		<parent link="thumb_base"/>
@@ -117,9 +150,15 @@
 		<visual name="middle_mesh_1">
 			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
 			<geometry>
-				<mesh filename="models/idx-F1.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="middle_L2" >
@@ -131,16 +170,21 @@
 		<visual name="middle_mesh_2">
 			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
 			<geometry>
-				<mesh filename="models/idx-F2.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<joint name="middle_q1" type="revolute">
 		<parent link="thumb_base"/>
 		<child link="middle_L1"/>
 		<origin xyz = " -9.653191e-3 -15.310271e-3 -67.853949e-3 " rpy = " -1.2810616535897934 1.308458 -1.2453756535897933 " />
 		<limit lower = "0" upper = "2.0943951" effort = "0.20" velocity = "8.0677777442"/>		<!-- angles in rad, efforts in N-m, velocity in rad/s -->
-		<dynamics damping = "0.001" friction = "0.001" />	<!-- Friction coefficient is not from quantitative measurement -->
 		<axis xyz="0 0 1"/>
 	</joint>
 	<joint name="middle_q2" type="revolute">
@@ -173,9 +217,15 @@
 		<visual name="ring_mesh_1">
 			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
 			<geometry>
-				<mesh filename="models/idx-F1.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 	</link>
 	<link name="ring_L2" >
 		<inertial>
@@ -186,9 +236,15 @@
 		<visual name="ring_mesh_2">
 			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
 			<geometry>
-				<mesh filename="models/idx-F2.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
-		</visual>		
+		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>		
 	</link>
 	<joint name="ring_q1" type="revolute">
 		<parent link="thumb_base"/>
@@ -230,9 +286,15 @@
 		<visual name="pinky_mesh_1">
 			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
 			<geometry>
-				<mesh filename="models/idx-F1.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "38.472723e-3 3.257695e-3 0.000000" rpy = "0 0 0.084474"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F1.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="pinky_L2" >
@@ -244,9 +306,15 @@
 		<visual name="pinky_mesh_2">
 			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
 			<geometry>
-				<mesh filename="models/idx-F2.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin rpy = "0 0 0" xyz = "9.1241e-3 0 0"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/idx-F2.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<joint name="pinky_q1" type="revolute">
@@ -288,9 +356,15 @@
 		<visual name="thumb_mesh_1">
 			<origin xyz = " 27.8283501e-3 1.7436510745838653e-19 14.7507e-3 " rpy = " 1.832595714594045 -0.0 5.366520605522463e-18 " />
 			<geometry>
-				<mesh filename="models/thumb-F1-MIR.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F1-MIR.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = " 27.8283501e-3 1.7436510745838653e-19 14.7507e-3 " rpy = " 1.832595714594045 -0.0 5.366520605522463e-18 " />
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F1-MIR.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<link name="thumb_L2" >
@@ -303,9 +377,15 @@
 		<visual name="thumb_mesh_2">
 			<origin xyz = "65.18669e-3 23.34021e-3 3.93483e-3" rpy = "-3.141592 0 0.343830"/>
 			<geometry>
-				<mesh filename="models/thumb-F2.STL"/>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F2.STL"/>
 			</geometry>
 		</visual>
+		<collision>
+			<origin xyz = "65.18669e-3 23.34021e-3 3.93483e-3" rpy = "-3.141592 0 0.343830"/>
+			<geometry>
+				<mesh filename="package://ability_hand_sim/meshes/thumb-F2.STL"/>
+			</geometry>
+		</collision>
 		
 	</link>
 	<joint name="thumb_q1" type="revolute">
@@ -330,4 +410,228 @@
 		<child link = "thumb_anchor"/>
 		<origin rpy = "0 0 0" xyz = "52.00122724e-3 28.00869333e-3 6.98483578e-3"/>
 	</joint>
+
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="index_q1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="index_q2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middle_q1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor3">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="middle_q2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor4">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ring_q1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor5">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="ring_q2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor6">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran7">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pinky_q1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor7">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran8">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="pinky_q2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor8">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran9">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="thumb_q1">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor9">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran10">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="thumb_q2">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="motor10">
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+	<ros2_control name="GazeboSimSystem" type="system">
+		<hardware>
+			<plugin>gazebo_ros2_control/GazeboSystem</plugin>
+		</hardware>
+
+		<joint name="index_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="index_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="middle_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="middle_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="ring_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="ring_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="pinky_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="pinky_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="thumb_q1">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+
+		<joint name="thumb_q2">
+			<command_interface name="effort">
+				<param name="min">-0.20</param>
+				<param name="min">0.20</param>
+			</command_interface>
+			<state_interface name="position"/>
+			<state_interface name="effort"/>
+			<state_interface name="velocity"/>
+		</joint>
+	</ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find ability_hand_sim)/config/hand_control.yaml</parameters>
+    </plugin>
+  </gazebo>
+
 </robot>

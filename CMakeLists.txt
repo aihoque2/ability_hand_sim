@@ -9,17 +9,20 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(controller_manager_msgs REQUIRED)
-find_package(control_msgs REQUIRED)
+#find_package(controller_manager_msgs REQUIRED)
+#find_package(control_msgs REQUIRED)
 find_package(ament_cmake REQUIRED)
 find_package(ament_cmake_python REQUIRED)
-find_package(gazebo_ros REQUIRED)
+#find_package(gazebo_ros REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(control_hand_test src/control_hand_test.cpp)
-ament_target_dependencies(control_hand_test rclcpp std_msgs)
+# add_executable(control_hand_test src/control_hand_test.cpp)
+# ament_target_dependencies(control_hand_test rclcpp std_msgs)
+
+# add_executable(reset_joints src/reset_joints.cpp)
+# ament_target_dependencies(reset_joints rclcpp std_msgs)
 
 #our launch files and stuff
 install(
@@ -29,7 +32,8 @@ install(
 
 # C++ nodes install
 install(TARGETS
-  control_hand_test
+  # control_hand_test
+  # reset_joints
   DESTINATION lib/${PROJECT_NAME}
 )
 
